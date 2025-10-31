@@ -6,12 +6,26 @@ Raspberry pi 4
 SD card with Raspberry OS 64 bit, debian based, standard using Raspberry Pi Imager
 Panels: 4x P5 Indoor Full Color Led Display Panel 64 * 32 Pixel 320mm * 160mm Size 1/16 Scan SMD 3 in 1 5mm 3528 RGB Board Led Module
 https://www.aliexpress.com/item/32817970711.html
+https://www.aliexpress.com/item/32965250590.html
 
 https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/utils/README.md
 
 ## Howto
 apt-get install libgraphicsmagick++-dev libwebp-dev -y
 make led-image-viewer
+
+isolcpus=3
+
+at the end of /boot/formware/cmdline.txt and reboot
+
+git clone https://github.com/hzeller/rpi-rgb-led-matrix.git
+cd rpi-rgb-led-matrix
+apt-get install -y git build-essential python3-dev python3-pip python3-pillow swig
+apt-get install cython3
+make -j4 build-python
+make install-python
+
+git clone https://github.com/nblom/christmas-led-hub75.git
 
 ## 3D printed
 https://www.printables.com/model/578204-hub75-5mm-pitch-4-panel-bracket#preview.Aqd77
