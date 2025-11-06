@@ -53,8 +53,8 @@
 
 - **Masters:** Contains MP4 files from Gemini AI (not included in this repo)
 - **Converted:** Converted MP4 to GIF using ffmpeg (`Scripts/mp42gif.sh`)
-
+- **Scripts:** Contains scripts
 
 ## Example
 
-![Santa sleeping GIF](https://raw.githubusercontent.com/nblom/christmas-led-hub75/refs/heads/main/Finished/Santa_sleeping.gif)
+![Santa sleeping GIF](https://raw.githubusercontent.com/nblom/christmas-led-hub75/refs/heads/main/Converted/Santa_sleeping.gif)
