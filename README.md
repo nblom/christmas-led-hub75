@@ -46,14 +46,14 @@
 
 - Use ChatGPT to generate 8-bit pixel art of Santa.
 - Use Google Gemini to generate video based on pixel art from ChatGPT.
-- *Note: As of creation, Gemini (2.5) struggles with pixel art for LED matrices, and ChatGPT (Sora 1) is not good at creating videos.*
+- *Note: As of creation, Gemini (2.5) struggles with pixel art for LED matrices, and ChatGPT (Sora 1) is not good at creating 8 bit pixel style videos.*
 
 
 ## Folder Structure
 
 - **Masters:** Contains MP4 files from Gemini AI (not included in this repo)
 - **Converted:** Converted MP4 to GIF using ffmpeg (`Scripts/mp42gif.sh`)
-- **Scripts:** Contains scripts
+- **Scripts:** Contains scripts used in project
 
 ## Example
 
