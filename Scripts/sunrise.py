@@ -1,13 +1,13 @@
 import requests
 import subprocess
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 # Set your location (latitude, longitude)
 LATITUDE = 57.70716
-LONGITUDE = -11.96679
+LONGITUDE = 11.96679
 
 def get_session_with_retries(retries=5, backoff_factor=1, status_forcelist=(500, 502, 504)):
     session = requests.Session()
@@ -29,14 +29,19 @@ def get_sunrise_time(lat, lng):
     data = response.json()
     sunrise_utc = data['results']['sunrise']
     sunrise_dt = datetime.fromisoformat(sunrise_utc)
-    # Convert UTC to local time
-    local_offset = datetime.now() - datetime.utcnow()
-    sunrise_local = sunrise_dt + local_offset
+    sunrise_local = sunrise_dt.astimezone()  # Converts to local timezone
     return sunrise_local
 
 def wait_until(target_time):
+    # Ensure both now and target_time are timezone-aware (UTC)
+    if target_time.tzinfo is not None:
+        def get_now():
+            return datetime.now(target_time.tzinfo)
+    else:
+        def get_now():
+            return datetime.now()
     while True:
-        now = datetime.now()
+        now = get_now()
         if now >= target_time:
             break
         time_to_wait = (target_time - now).total_seconds()
