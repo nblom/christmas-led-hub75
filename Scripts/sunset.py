@@ -7,7 +7,7 @@ from urllib3.util.retry import Retry
 
 # Set your location (latitude, longitude)
 LATITUDE = 57.70716
-LONGITUDE = -11.96679
+LONGITUDE = 11.96679
 
 def get_session_with_retries(retries=5, backoff_factor=1, status_forcelist=(500, 502, 504)):
     session = requests.Session()
@@ -24,19 +24,24 @@ def get_session_with_retries(retries=5, backoff_factor=1, status_forcelist=(500,
 
 def get_sunset_time(lat, lng):
     session = get_session_with_retries()
-    url = f"https://api.sunset-sunset.org/json?lat={lat}&lng={lng}&formatted=0"
+    url = f"https://api.sunrise-sunset.org/json?lat={lat}&lng={lng}&formatted=0"
     response = session.get(url)
     data = response.json()
     sunset_utc = data['results']['sunset']
     sunset_dt = datetime.fromisoformat(sunset_utc)
-    # Convert UTC to local time
-    local_offset = datetime.now() - datetime.utcnow()
-    sunset_local = sunset_dt + local_offset
+    sunset_local = sunset_dt.astimezone()  # Converts to local timezone
     return sunset_local
 
 def wait_until(target_time):
+    # Ensure both now and target_time are timezone-aware (UTC)
+    if target_time.tzinfo is not None:
+        def get_now():
+            return datetime.now(target_time.tzinfo)
+    else:
+        def get_now():
+            return datetime.now()
     while True:
-        now = datetime.now()
+        now = get_now()
         if now >= target_time:
             break
         time_to_wait = (target_time - now).total_seconds()
