@@ -9,6 +9,8 @@
 	- 4x P5 Indoor Full Color LED Display Panel (64x32 pixels, 320mm x 160mm, 1/16 scan, SMD 3-in-1, 5mm 3528 RGB)
 		- [Panel link 1](https://www.aliexpress.com/item/32817970711.html)
 		- [Panel link 2](https://www.aliexpress.com/item/32965250590.html)
+- **HUB75 interface**
+- [RGB LED Matrix Panel Drive Board](https://www.electrodragon.com/product/rgb-matrix-panel-drive-board-raspberry-pi/)
 - [rpi-rgb-led-matrix utils README](https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/utils/README.md)
 
 
