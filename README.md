@@ -60,3 +60,10 @@
 ## Example
 
 ![Santa sleeping GIF](https://raw.githubusercontent.com/nblom/christmas-led-hub75/refs/heads/main/Converted/Santa_sleeping.gif)
+
+
+## Crontab
+
+- 02 4	* * *	root	cd /home/pi/christmas-led-hub75 && /usr/bin/python Scripts/sunrise.py
+- 02 12	* * *	root	cd /home/pi/christmas-led-hub75 && /usr/bin/git pull
+- 02 13	* * *	root	cd /home/pi/christmas-led-hub75 && /usr/bin/python Scripts/sunset.py
