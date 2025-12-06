@@ -66,7 +66,10 @@
 
 Add to /etc/crontab, adjust home path as needed, and perhaps dont blindly trust git pull
 
-- 02 4	* * *	root	cd /home/pi/christmas-led-hub75 && /usr/bin/python Scripts/sunrise.py
-- 02 6	* * *	root	cd /home/pi/christmas-led-hub75 && /usr/bin/bash Scripts/startup.sh
-- 02 12	* * *	root	cd /home/pi/christmas-led-hub75 && /usr/bin/git pull
-- 02 13	* * *	root	cd /home/pi/christmas-led-hub75 && /usr/bin/python Scripts/sunset.py
+- 02 3    * * *   root    cd /home/pi/christmas-led-hub75 && /usr/bin/git pull
+- 15 6    * * *   root    cd /home/pi/christmas-led-hub75 && /usr/bin/bash Scripts/startup.sh >> startup.log
+- 16 6    * * *   root    cd /home/pi/christmas-led-hub75 && /usr/bin/python Scripts/sunrise.py
+- 00 8    * * *   root    killall led-image-viewer
+- 02 12   * * *   root    cd /home/pi/christmas-led-hub75 && /usr/bin/git pull
+- 02 13   * * *   root    cd /home/pi/christmas-led-hub75 && /usr/bin/python Scripts/sunset.py
+- 00 22   * * *   root    killall led-image-viewer
