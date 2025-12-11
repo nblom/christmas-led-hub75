@@ -48,12 +48,16 @@ def wait_until(target_time):
         time.sleep(min(time_to_wait, 60))  # Sleep up to 60 seconds
 
 def main():
-    sunset = get_sunset_time(LATITUDE, LONGITUDE)
-    print(f"Sunset today is at {sunset.strftime('%Y-%m-%d %H:%M:%S')}")
-    wait_until(sunset)
+    try:
+        sunset = get_sunset_time(LATITUDE, LONGITUDE)
+        print(f"Sunset today is at {sunset.strftime('%Y-%m-%d %H:%M:%S')}")
+        wait_until(sunset)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        print("Skipping waiting for sunset, running command immediately.")
     # Execute your command
     subprocess.run("Scripts/startup.sh", shell=True)
-    print("Command executed at sunset.")
+    #print("Command executed at sunset.")
 
 if __name__ == "__main__":
     main()
