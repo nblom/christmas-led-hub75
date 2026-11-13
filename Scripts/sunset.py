@@ -45,6 +45,7 @@ def wait_until(target_time):
         if now >= target_time:
             break
         time_to_wait = (target_time - now).total_seconds()
+        time_to_wait -= 900  # Subtract fifteen minutes to shorten the wait, so actual command runs 15 minutes before sunset
         time.sleep(min(time_to_wait, 60))  # Sleep up to 60 seconds
 
 def main():
