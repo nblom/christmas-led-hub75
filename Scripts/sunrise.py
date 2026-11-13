@@ -46,6 +46,7 @@ def wait_until(target_time):
             break
         time_to_wait = (target_time - now).total_seconds()
         time.sleep(min(time_to_wait, 60))  # Sleep up to 60 seconds
+        time.sleep(900) # Add fifteen minutes delay, so actual shutdown happens 15 minutes after sunrise
 
 def main():
     sunrise = get_sunrise_time(LATITUDE, LONGITUDE)
