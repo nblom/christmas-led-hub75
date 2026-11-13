@@ -5,7 +5,7 @@ MONTH=$(date +%m)
 
 if [ "$MONTH" = "11" ]; then
     # Select a random file from November folder
-    FILE=$(ls ../November/* 2>/dev/null | shuf -n 1)
+    FILE=$(ls November/* 2>/dev/null | shuf -n 1)
     if [ -z "$FILE" ]; then
         # Fallback to Converted if November folder is empty
         FILE="Converted/*"
